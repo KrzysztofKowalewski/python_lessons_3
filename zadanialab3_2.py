@@ -143,6 +143,31 @@ def pole_kwadratu(a):
 
 #print("Pole kwadratu:", pole_kwadratu(4))
 
+def dekorator(log):
+    def new_update(host = "localhost", port=905, user = "edek2003", password = "Wsx123", dod_pola = None):
+        if dod_pola == None:
+            dod_pola = {}
+        zaloguj = log(host,port, user, password, dod_pola = dod_pola)
+        print(zaloguj)
+    return new_update
+
+@dekorator
+def logowanie(host = "localhost", port = 905, user = "edek2003", password = "Wsx123", dod_pola = None):
+    dane = {"Host: ": host, "port": port}
+    if user == 'edek2003' and password == 'Wsx123':
+        dane.update(dod_pola)
+        return dane
+    else:
+        print("Złe dane logowania")
+
+user = 'login'
+password = 'haslo'
+dod_pola = {'data_base': 'https://pl.wikipedia.org'}
+
+logowanie(host='uwb.pl',port=404, user='edek2003', password='Wsx123', dod_pola=dod_pola)
+
+
+
 
 
 
